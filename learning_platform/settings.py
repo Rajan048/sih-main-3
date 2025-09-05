@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3#+&7p_0i*em*--!12=dob9296x0^v*+j)ola^b(dt66xf+=%m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sih-project-f80o.onrender.com']
 
 
 # Application definition
@@ -238,3 +238,8 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
+import os
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "default-secret-key")
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
