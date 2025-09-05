@@ -240,6 +240,16 @@ LOCALE_PATHS = [
 ]
 import os
 
+# Secret key
 SECRET_KEY = os.environ.get("SECRET_KEY", "default-secret-key")
+
+# Debug mode
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+
+# Allowed hosts
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "sih-project-f80o.onrender.com").split(",")
+
+# CSRF trusted origins (for Render HTTPS domain)
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{host.strip()}" for host in ALLOWED_HOSTS if host
+]
